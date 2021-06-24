@@ -7,12 +7,12 @@ var svg = d3.select("div#container").append("svg").attr("preserveAspectRatio", "
     
 
 var color = d3.scaleThreshold()
-              .domain([1, 10000, 20000, 50000, 70000, 900000, 100000, 120000])
+              .domain([1, 10, 50, 100, 150, 200, 250, 300])
               .range(d3.schemeGreens[9]);
 
 var x = d3.scaleSqrt()
-    .domain([0, 170000])
-    .rangeRound([400, 950]);
+    .domain([0, 450])
+    .rangeRound([100, 500]);
  
 
 var g = svg.append("g")
@@ -79,7 +79,7 @@ var div = d3.select("body").append("div")
       .selectAll("path")
       .data(features)
       .enter().append("path")
-      .attr("fill", function(d) { return color(d.properties.POP61); })
+      .attr("fill", function(d) { return color(d.properties.G9TYPE_POP); })
       .attr("d", path)
       .attr('vector-effect', 'non-scaling-stroke').style('stroke', 'white').style('stroke-width', 0.5).style("opacity",1)
       
@@ -91,7 +91,7 @@ var div = d3.select("body").append("div")
                 "<center>" + d.properties.AMP_NAMT + "</center>" + 
                 "<p> จำนวนประชากร: " + d.properties.POP61 + "</p>" +
 				"<p> พื้นที่: " + d.properties.G9TYPE_ARE + " km<span>2<span></p>" +  
-                "<p> อัตราส่วนพื้นที่สีเขียวต่อประชากร: " + d.properties.POP61 + "</p>" 
+                "<p> อัตราส่วนพื้นที่สีเขียวต่อประชากร: " + d.properties.G9TYPE_POP + "</p>" 
             )	
                 .style("left", (d3.event.pageX) + "px")	
                 .style("top", (d3.event.pageY) + "px") 

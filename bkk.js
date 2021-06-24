@@ -1,6 +1,6 @@
 
-var w = 1280;
-var h = 800;
+var w = 1800;
+var h = 2000;
 var svg = d3.select("div#container").append("svg").attr("preserveAspectRatio", "xMinYMin meet").style("background-color","white")
 .attr("viewBox", "0 0 " + w + " " + h)
 .classed("svg-content", true);
@@ -11,8 +11,8 @@ var color = d3.scaleThreshold()
               .range(d3.schemeGreens[9]);
 
 var x = d3.scaleSqrt()
-    .domain([0, 50000])
-    .rangeRound([440, 950]);
+    .domain([0, 170000])
+    .rangeRound([400, 950]);
  
 
 var g = svg.append("g")
@@ -28,7 +28,7 @@ g.selectAll("rect")
       return d;
     }))
   .enter().append("rect")
-    .attr("height", 14)
+    .attr("height", 10)
     .attr("x", function(d) { return x(d[0]); })
     .attr("width", function(d) { return x(d[1]) - x(d[0]); })
     .attr("fill", function(d) { return color(d[0]); });
@@ -50,7 +50,7 @@ g.call(d3.axisBottom(x)
     .remove();
 
 
-var projection = d3.geoMercator().translate([w/2, h/2]).scale(8000).center([100,13])    ;
+var projection = d3.geoMercator().scale(60000).rotate([-100.6331, -13.2]).translate([w/2, h/2]);
 var path = d3.geoPath().projection(projection);
 
 
@@ -69,9 +69,6 @@ Promise.all([bkk, amp]).then(function(values){
         }
     })
     // 
-    console.log(features[42].properties.G9TYPE_POP);
-    console.log(features[42].properties.NAME_2)  
-
 
 var div = d3.select("body").append("div")	
         .attr("class", "tooltip")				
@@ -97,7 +94,7 @@ var div = d3.select("body").append("div")
                 "<p> อัตราส่วนพื้นที่สีเขียวต่อประชากร: " + d.properties.POP61 + "</p>" 
             )	
                 .style("left", (d3.event.pageX) + "px")	
-                .style("top", (d3.event.pageY - 28) + "px") 
+                .style("top", (d3.event.pageY) + "px") 
 			d3.select(this)
 					.style('opacity', '1').style('stroke', 'white').style('stroke-width', 1.8) .style("opacity",1.5)
             })	

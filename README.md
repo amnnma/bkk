@@ -1,1 +1,1 @@
-# bkk.github.io
+# https://amnnma.github.io/bkk/

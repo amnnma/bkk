@@ -85,7 +85,7 @@ var div = d3.select("body").append("div")
       
       .on("mouseover", function(d) {		
             div.transition()		
-                .duration(200)		
+                .duration(40)		
                 .style("opacity", 0.8);		
             div.html(                                                                
                 "<center>" + d.properties.AMP_NAMT + "</center>" + 
